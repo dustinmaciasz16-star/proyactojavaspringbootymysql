@@ -1,0 +1,75 @@
+package com.krakedev.proyectos.entidades;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "elpleados")
+public class Empleado {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(nullable = false, length = 100)
+	private String nombre;
+	@Column(nullable = false, length = 250)
+	private String cargo;
+	@OneToMany(mappedBy = "empleados")
+	@JsonIgnore
+	private List<Tarea> tareas;
+
+	public Empleado() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Empleado(Integer id, String nombre, String cargo, List<Tarea> tareas) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.cargo = cargo;
+		this.tareas = tareas;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public List<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(List<Tarea> tareas) {
+		this.tareas = tareas;
+	}
+
+}
