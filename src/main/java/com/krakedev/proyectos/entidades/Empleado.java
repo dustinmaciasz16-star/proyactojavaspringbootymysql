@@ -2,6 +2,7 @@ package com.krakedev.proyectos.entidades;
 
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -9,11 +10,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "elpleados")
+@Table(name = "empleados")
 public class Empleado {
 
 	@Id
@@ -23,7 +24,7 @@ public class Empleado {
 	private String nombre;
 	@Column(nullable = false, length = 250)
 	private String cargo;
-	@OneToMany(mappedBy = "empleados")
+	@ManyToMany(mappedBy = "empleados")
 	@JsonIgnore
 	private List<Tarea> tareas;
 

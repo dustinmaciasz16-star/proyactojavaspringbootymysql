@@ -74,7 +74,7 @@ public class TareaService {
 			return null;
 		}
 		data.setDescripcion(tarea.getDescripcion());
-		data.setFachaLimite(tarea.getFachaLimite());
+		data.setFechaLimite(tarea.getFechaLimite());
 		data.setCostoEstimado(tarea.getCostoEstimado());
 		data.setProyecto(tarea.getProyecto());
 		data.setEmpleados(tarea.getEmpleados());

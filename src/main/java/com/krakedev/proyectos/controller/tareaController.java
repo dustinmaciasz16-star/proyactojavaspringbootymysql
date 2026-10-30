@@ -67,7 +67,7 @@ public class tareaController {
 		}
 	}
 
-	@PutMapping("/id")
+	@PutMapping("/{id}")
 	public ResponseEntity<?> actualizar(@PathVariable int id, @RequestBody Tarea tarea) {
 		try {
 			Tarea actualizado = service.actualizar(id, tarea);
@@ -81,7 +81,7 @@ public class tareaController {
 		}
 	}
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable int id) {
 		try {
 			boolean eliminado = service.eliminar(id);

@@ -25,7 +25,7 @@ public class Proyecto {
 	@Column(nullable = false, length = 250)
 	private String descripcion;
 	@Column(nullable = false)
-	private LocalDate fachaInicio;
+	private LocalDate fechaInicio;
 	@OneToMany(mappedBy = "proyecto")
 	@JsonIgnore
 	private List<Tarea> tareas;
@@ -34,12 +34,12 @@ public class Proyecto {
 		super();
 	}
 
-	public Proyecto(Integer id, String nombre, String descripcion, LocalDate fachaInicio, List<Tarea> tareas) {
+	public Proyecto(Integer id, String nombre, String descripcion, LocalDate fechaInicio, List<Tarea> tareas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.fachaInicio = fachaInicio;
+		this.fechaInicio = fechaInicio;
 		this.tareas = tareas;
 	}
 
@@ -67,12 +67,12 @@ public class Proyecto {
 		this.descripcion = descripcion;
 	}
 
-	public LocalDate getFachaInicio() {
-		return fachaInicio;
+	public LocalDate getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFachaInicio(LocalDate fachaInicio) {
-		this.fachaInicio = fachaInicio;
+	public void setFechaInicio(LocalDate fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
 	public List<Tarea> getTareas() {

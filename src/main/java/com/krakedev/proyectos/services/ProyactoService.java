@@ -45,7 +45,7 @@ public class ProyactoService {
 		}
 		data.setNombre(proyecto.getNombre());
 		data.setDescripcion(proyecto.getDescripcion());
-		data.setFachaInicio(proyecto.getFachaInicio());
+		data.setFechaInicio(proyecto.getFechaInicio());
 		data.setTareas(proyecto.getTareas());
 		return proyectoRepo.save(data);
 	}

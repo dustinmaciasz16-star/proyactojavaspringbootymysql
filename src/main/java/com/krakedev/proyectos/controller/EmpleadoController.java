@@ -32,7 +32,7 @@ public class EmpleadoController {
 			Empleado creado = service.crear(empleado);
 			return ResponseEntity.status(HttpStatus.CREATED).body(creado);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear pelicula");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear tarea");
 		}
 	}
 
@@ -42,11 +42,11 @@ public class EmpleadoController {
 			List<Empleado> empleados = service.listar();
 			return ResponseEntity.ok(empleados);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al listar peliculas");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al listar tarea");
 		}
 	}
 
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> buscarPorId(@PathVariable int id) {
 		try {
 			Empleado encontrado = service.buscar(id);
@@ -56,11 +56,11 @@ public class EmpleadoController {
 			return ResponseEntity.ok(encontrado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("Error al buscar la peliculas por el id");
+					.body("Error al buscar la tarea por el id");
 		}
 	}
 
-	@PutMapping("/id")
+	@PutMapping("/{id}")
 	public ResponseEntity<?> actualizar(@PathVariable int id, @RequestBody Empleado empleado) {
 		try {
 			Empleado actualizado = service.actualizar(id, empleado);
@@ -70,11 +70,11 @@ public class EmpleadoController {
 			return ResponseEntity.ok(actualizado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("Error al actualizar la peliculas por el id");
+					.body("Error al actualizar la tarea por el id");
 		}
 	}
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable int id) {
 		try {
 			boolean eliminado = service.eliminar(id);
@@ -84,7 +84,7 @@ public class EmpleadoController {
 			return ResponseEntity.ok(eliminado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("Error al eliminar la peliculas por el id");
+					.body("Error al eliminar la tarea por el id");
 		}
 	}
 }

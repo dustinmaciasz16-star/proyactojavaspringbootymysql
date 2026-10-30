@@ -24,7 +24,7 @@ public class Tarea {
 	@Column(nullable = false, length = 250)
 	private String descripcion;
 	@Column(nullable = false)
-	private LocalDate fachaLimite;
+	private LocalDate fechaLimite;
 	@Column(nullable = false)
 	private double costoEstimado;
 	@ManyToOne
@@ -39,12 +39,12 @@ public class Tarea {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tarea(Integer id, String descripcion, LocalDate fachaLimite, double costoEstimado, Proyecto proyecto,
+	public Tarea(Integer id, String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
 			List<Empleado> empleados) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-		this.fachaLimite = fachaLimite;
+		this.fechaLimite = fechaLimite;
 		this.costoEstimado = costoEstimado;
 		this.proyecto = proyecto;
 		this.empleados = empleados;
@@ -66,12 +66,12 @@ public class Tarea {
 		this.descripcion = descripcion;
 	}
 
-	public LocalDate getFachaLimite() {
-		return fachaLimite;
+	public LocalDate getFechaLimite() {
+		return fechaLimite;
 	}
 
-	public void setFachaLimite(LocalDate fachaLimite) {
-		this.fachaLimite = fachaLimite;
+	public void setFechaLimite(LocalDate fechaLimite) {
+		this.fechaLimite = fechaLimite;
 	}
 
 	public double getCostoEstimado() {
