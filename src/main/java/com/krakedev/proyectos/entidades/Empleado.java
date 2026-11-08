@@ -2,7 +2,6 @@ package com.krakedev.proyectos.entidades;
 
 import java.util.List;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -27,18 +26,29 @@ public class Empleado {
 	@ManyToMany(mappedBy = "empleados")
 	@JsonIgnore
 	private List<Tarea> tareas;
+	@Column(nullable = false, length = 50)
+	private String departamento;
 
 	public Empleado() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleado(Integer id, String nombre, String cargo, List<Tarea> tareas) {
+	public Empleado(Integer id, String nombre, String cargo, List<Tarea> tareas, String departamento) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.cargo = cargo;
 		this.tareas = tareas;
+		this.departamento = departamento;
+	}
+
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
 	}
 
 	public Integer getId() {

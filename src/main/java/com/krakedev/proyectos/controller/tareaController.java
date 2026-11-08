@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class tareaController {
 	}
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> guardar(@RequestBody Tarea tarea) {
 		try {
 			Tarea guardada = service.guardar(tarea);
@@ -41,6 +43,7 @@ public class tareaController {
 	}
 
 	@GetMapping
+	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	public ResponseEntity<?> listar() {
 		try {
 			List<Tarea> tareas = service.listar();
@@ -62,7 +65,7 @@ public class tareaController {
 
 			return ResponseEntity.ok(tarea);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("Error al buscar tarea: " + e.getMessage());
 		}
 	}

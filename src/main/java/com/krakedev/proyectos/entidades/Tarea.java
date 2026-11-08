@@ -33,6 +33,8 @@ public class Tarea {
 	@ManyToMany
 	@JoinTable(name = "tarea_empleados", joinColumns = @JoinColumn(name = "tarea_id"), inverseJoinColumns = @JoinColumn(name = "empleado_id"))
 	private List<Empleado> empleados;
+	@Column(nullable = false, length = 30)
+	private String estado;
 
 	public Tarea() {
 		super();
@@ -40,7 +42,7 @@ public class Tarea {
 	}
 
 	public Tarea(Integer id, String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
-			List<Empleado> empleados) {
+			List<Empleado> empleados, String estado) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -48,6 +50,15 @@ public class Tarea {
 		this.costoEstimado = costoEstimado;
 		this.proyecto = proyecto;
 		this.empleados = empleados;
+		this.estado = estado;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public Integer getId() {
